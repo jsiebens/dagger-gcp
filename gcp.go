@@ -90,6 +90,16 @@ func (m *Gcp) RegistryAuth(ctx context.Context, ctr *dagger.Container) (*dagger.
 	return c, nil
 }
 
+func (m *Gcp) RegistryConfig(
+	path string,
+	// +optional
+	owner string,
+	// +optional
+	mode int,
+) (*RegistryConfig, error) {
+	return &RegistryConfig{Path: path, Owner: owner, Mode: mode, Gcp: m}, nil
+}
+
 func (m *Gcp) GetAccessToken(
 	ctx context.Context,
 	// +optional
